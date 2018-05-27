@@ -1,0 +1,18 @@
+package ksr.models.entities.enums;
+
+public enum Occupation {
+    TECH_SUPPORT,
+    CRAFT_REPAIR,
+    OTHER_SERVICE,
+    SALES,
+    EXEC_MANAGERIAL,
+    PROF_SPECIALTY,
+    HANDLERS_CLEANERS,
+    MACHINE_OP_INSPCT,
+    ADM_CLERICAL,
+    FARMING_FISHING,
+    TRANSPORT_MOVING,
+    PRIV_HOUSE_SERV,
+    PROTECTIVE_SERV,
+    ARMED_FORCES
+}
