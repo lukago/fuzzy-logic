@@ -1,5 +1,9 @@
 package ksr.models.fuzzy.functions;
 
 public interface IMembershipFunction {
-    double membership(double x);
+    double countDegree(double x);
+
+    double distance();
+
+    double square();
 }

@@ -15,11 +15,20 @@ public class TrapezoidalFunction implements IMembershipFunction {
     }
 
     @Override
-    public double membership(double x) {
+    public double countDegree(double x) {
         if (x >= topLeft && x <= topRight) return 1;
         if (x > bottomLeft && x < topLeft) return (x - bottomLeft) / (topLeft - bottomLeft);
         if (x > topRight && x < bottomRight) return (bottomRight - x) / (bottomRight - topRight);
         return 0;
     }
 
+    @Override
+    public double distance() {
+        return (topLeft - bottomLeft) * (bottomRight - topRight);
+    }
+
+    @Override
+    public double square() {
+        return bottomRight - bottomLeft;
+    }
 }
