@@ -9,7 +9,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class FuzzySet {
+public class FuzzySet implements IFuzzy {
 
     private String label;
     private List<FuzzySet> innerSets;
@@ -25,9 +25,26 @@ public class FuzzySet {
         this.membershipValues = new double[values.size()];
 
         for (int i = 0; i < membershipValues.length; i++) {
-            this.membershipValues[i] = membershipFunction.countDegree(values.get(i));
+            this.membershipValues[i] = membership(values.get(i));
         }
 
+    }
+
+    @Override
+    public double membership(double x) {
+        return membershipFunction.countDegree(x);
+    }
+
+    @Override
+    public double cardinalNumber() {
+        double cardinal = 0;
+
+        for (double membershipValue : membershipValues) {
+            if (membershipValue > 0) {
+                cardinal++;
+            }
+        }
+        return cardinal / values.size();
     }
 
     public FuzzySet substract(FuzzySet plus) {
@@ -54,16 +71,5 @@ public class FuzzySet {
         }
 
         return this;
-    }
-
-    public double cardinalNumber() {
-        double cardinal = 0;
-
-        for (double membershipValue : membershipValues) {
-            if (membershipValue > 0) {
-                cardinal++;
-            }
-        }
-        return cardinal / values.size();
     }
 }
