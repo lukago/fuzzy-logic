@@ -73,7 +73,7 @@ public class App {
         qualifiers.add(raceQualifier);
         qualifiers.add(managersAvarageSalaries);
 
-        //System.out.println(LinguisticAnswer.answerSets(fuzzySets, quantyfiers));
+        System.out.println(LinguisticAnswer.answerSets(fuzzySets, quantyfiers));
         System.out.println(LinguisticAnswer.answerQualifiers(qualifiers, quantyfiers));
     }
 }

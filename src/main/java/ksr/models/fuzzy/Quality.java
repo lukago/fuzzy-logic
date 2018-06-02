@@ -79,9 +79,7 @@ public class Quality {
     }
 
     public static double cardinalityQuantifierDegree(Quantyfier quantyfier, FuzzySet fuzzySet) {
-        double x = 1.0 - quantyfier.cardinalNumber() / fuzzySet.getMembershipValues().length;
-        System.out.println(x);
-        return x;
+        return 1.0 - quantyfier.cardinalNumber() / fuzzySet.getMembershipValues().length;
     }
 
     public static double imprecisionQuantifierDegree(Quantyfier quantyfier, FuzzySet fuzzySet) {
