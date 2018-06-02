@@ -1,4 +1,4 @@
-package ksr.models.fuzzy;
+package ksr.models.fuzzy.sets;
 
 public interface IFuzzy {
     double membership(double x);

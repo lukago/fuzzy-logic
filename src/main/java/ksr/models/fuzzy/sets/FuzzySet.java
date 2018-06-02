@@ -1,4 +1,4 @@
-package ksr.models.fuzzy;
+package ksr.models.fuzzy.sets;
 
 import ksr.models.fuzzy.functions.IMembershipFunction;
 import lombok.Getter;
@@ -15,7 +15,7 @@ public class FuzzySet implements IFuzzy {
     private List<FuzzySet> innerSets;
     private IMembershipFunction membershipFunction;
     private List<Double> values;
-    private double membershipValues[];
+    private double[] membershipValues;
 
     public FuzzySet(String label, IMembershipFunction membershipFunction, List<Double> values) {
         this.label = label;

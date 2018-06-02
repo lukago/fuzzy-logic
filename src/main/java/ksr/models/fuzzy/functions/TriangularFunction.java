@@ -1,35 +1,36 @@
 package ksr.models.fuzzy.functions;
 
 public class TriangularFunction implements IMembershipFunction {
+    private double a;
+    private double b;
+    private double c;
 
-    private double left;
-    private double right;
-
-    public TriangularFunction(double left, double right) {
-        this.left = left;
-        this.right = right;
+    public TriangularFunction(double a, double b, double c) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
     }
 
     @Override
     public double countDegree(double x) {
-        if (x > left - right && x < left + right) {
-            if (x <= left) {
-                return Math.abs(Math.abs(x) - Math.abs(left) - right) / right;
-            } else {
-                return Math.abs(Math.abs(left) + right - Math.abs(x)) / right;
-            }
+        if (x == b) {
+            return 1;
+        } else if (x > a && x < b) {
+            return 1.0 / (b - a) * x + 1.0 - (1.0 / (b - a)) * b;
+        } else if (x > b && x < c) {
+            return 1.0 / (b - c) * x + 1.0 - (1.0 / (b - c)) * b;
+        } else {
+            return 0;
         }
-
-        return 0;
     }
 
     @Override
     public double distance() {
-        return right;
+        return c;
     }
 
     @Override
     public double square() {
-        return right - left;
+        return c - a;
     }
 }

@@ -14,10 +14,10 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CsvDao implements IDao<List<Person>> {
+public class CsvPersonDao implements IDao<List<Person>> {
     private String filepath;
 
-    public CsvDao(String filepath) {
+    public CsvPersonDao(String filepath) {
         this.filepath = filepath;
     }
 

@@ -1,7 +1,7 @@
 package ksr.models.fuzzy.functions;
 
 public class TrapezoidalFunction implements IMembershipFunction {
-
+    
     private double topLeft;
     private double bottomLeft;
     private double topRight;

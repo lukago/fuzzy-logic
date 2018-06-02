@@ -1,0 +1,10 @@
+{
+  "qunatifiers": [
+    {
+      "label": "Około 1000",
+      "ftype": "triangular",
+      "fparams": "500,100,1500",
+      "relative": false
+    }
+  ]
+}

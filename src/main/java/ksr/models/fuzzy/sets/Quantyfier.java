@@ -1,4 +1,4 @@
-package ksr.models.fuzzy;
+package ksr.models.fuzzy.sets;
 
 import ksr.models.fuzzy.functions.IMembershipFunction;
 import lombok.AllArgsConstructor;
@@ -10,9 +10,10 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Quantyficator implements IFuzzy {
+public class Quantyfier implements IFuzzy {
     private IMembershipFunction membershipFunction;
     private String label;
+    private boolean relative;
 
     @Override
     public double membership(double x) {
