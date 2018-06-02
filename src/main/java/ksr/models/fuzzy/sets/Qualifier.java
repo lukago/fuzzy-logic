@@ -9,17 +9,18 @@ import java.util.List;
 
 @Getter
 @Setter
-public class Qualificator implements IFuzzy {
+public class Qualifier implements IFuzzy {
 
     private FuzzySet data;
     private FuzzySet outer;
-    private List<Qualificator> innerQualificators;
+    private List<Qualifier> innerQualifiers;
     private double[] membershipValues;
 
-    public Qualificator(String name, IMembershipFunction func, List<Double> values, FuzzySet fuzzySet) {
+    public Qualifier(String name, IMembershipFunction func, List<Double> values, FuzzySet fuzzySet) {
         this.data = new FuzzySet(name, func, values);
-        this.outer = fuzzySet;
-        this.innerQualificators = new ArrayList<>();
+        this.outer = new FuzzySet(fuzzySet.getLabel(), fuzzySet.getMembershipFunction(),
+                new ArrayList<>(fuzzySet.getValues()));
+        this.innerQualifiers = new ArrayList<>();
         this.membershipValues = new double[outer.getValues().size()];
 
 

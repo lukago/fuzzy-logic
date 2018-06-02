@@ -28,9 +28,4 @@ public class TriangularFunction implements IMembershipFunction {
     public double distance() {
         return c;
     }
-
-    @Override
-    public double square() {
-        return c - a;
-    }
 }

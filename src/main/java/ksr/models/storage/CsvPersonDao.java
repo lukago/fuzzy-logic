@@ -45,6 +45,7 @@ public class CsvPersonDao implements IDao<List<Person>> {
 
             person.setAge(Integer.valueOf(records[0]));
             person.setWorkclass(WorkClass.valueOf(records[1]));
+            person.setSalary(Integer.valueOf(records[2]));
             person.setEducation(Education.valueOf(records[3]));
             person.setMartialStatus(MartialStatus.valueOf(records[5]));
             person.setOccupation(Occupation.valueOf(records[6]));

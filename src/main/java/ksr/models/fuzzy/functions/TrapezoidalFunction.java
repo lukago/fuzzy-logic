@@ -26,9 +26,4 @@ public class TrapezoidalFunction implements IMembershipFunction {
     public double distance() {
         return (topLeft - bottomLeft) * (bottomRight - topRight);
     }
-
-    @Override
-    public double square() {
-        return bottomRight - bottomLeft;
-    }
 }

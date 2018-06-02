@@ -1,0 +1,10 @@
+{
+  "sets": [
+    {
+      "label": "Middle Age",
+      "ftype": "trapezoidal",
+      "fparams": "25,30,35,40",
+      "column": "AGE"
+    }
+  ]
+}

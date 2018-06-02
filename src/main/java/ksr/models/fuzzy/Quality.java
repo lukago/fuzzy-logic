@@ -1,29 +1,29 @@
 package ksr.models.fuzzy;
 
 import ksr.models.fuzzy.sets.FuzzySet;
-import ksr.models.fuzzy.sets.Qualificator;
+import ksr.models.fuzzy.sets.Qualifier;
 import ksr.models.fuzzy.sets.Quantyfier;
 
-public class Coefficients {
+public class Quality {
 
-    private Coefficients() {
+    private Quality() {
     }
 
     public static double truthfulnessDegree(Quantyfier quantyfier, FuzzySet fuzzySet) {
         return quantyfier.membership(fuzzySet.cardinalNumber() * fuzzySet.getValues().size());
     }
 
-    public static double imprecisionAdderDegree(FuzzySet fuzzySet) {
+    public static double imprecisionSumarizerDegree(FuzzySet fuzzySet) {
         double cardinalNumber = fuzzySet.cardinalNumber();
 
         for (FuzzySet set : fuzzySet.getInnerSets()) {
             cardinalNumber *= set.cardinalNumber();
         }
 
-        return Math.pow(cardinalNumber, 1.0 / (fuzzySet.getInnerSets().size() + 1));
+        return Math.pow(cardinalNumber, 1.0 / (fuzzySet.getInnerSets().size() + 1.0));
     }
 
-    public static double coverageAdderDegree(FuzzySet fuzzySet) {
+    public static double coverageSumarizerDegree(FuzzySet fuzzySet) {
         double posValuesCnt = 0;
         double cnt = 0;
 
@@ -52,7 +52,7 @@ public class Coefficients {
         return cnt / posValuesCnt;
     }
 
-    public static double accuracyAdderMeasurement(FuzzySet fuzzySet) {
+    public static double accuracySumarizerMeasurement(FuzzySet fuzzySet) {
         double cardinalNumber = fuzzySet.cardinalNumber();
 
         for (FuzzySet set : fuzzySet.getInnerSets()) {
@@ -61,34 +61,35 @@ public class Coefficients {
             }
         }
 
-        return Math.abs(cardinalNumber - coverageAdderDegree(fuzzySet));
+        return Math.abs(cardinalNumber - coverageSumarizerDegree(fuzzySet));
     }
 
-    public static double adderLenght(FuzzySet fuzzySet) {
-        return 2.0 * Math.pow(0.5, fuzzySet.getInnerSets().size() + 1);
+    public static double sumarizerLenght(FuzzySet fuzzySet) {
+        return 2.0 * Math.pow(0.5, fuzzySet.getInnerSets().size() + 1.0);
     }
 
-    public static double cardinalityAdderDegree(FuzzySet fuzzySet) {
+    public static double cardinalitySumarizerDegree(FuzzySet fuzzySet) {
         double sum = fuzzySet.cardinalNumber();
 
         for (FuzzySet set : fuzzySet.getInnerSets()) {
             sum *= set.cardinalNumber();
         }
 
-        return 1 - Math.pow(sum, 1.0 / fuzzySet.getMembershipValues().length);
+        return 1 - Math.pow(sum, 1.0 / fuzzySet.getMembershipValues().length + 1.0);
     }
 
     public static double cardinalityQuantifierDegree(Quantyfier quantyfier, FuzzySet fuzzySet) {
         return 1.0 - quantyfier.cardinalNumber() / fuzzySet.getMembershipValues().length;
     }
 
-    public static double imprecisionQuantyficatorDegree(Quantyfier quantyfier, FuzzySet fuzzySet) {
+    public static double imprecisionQuantifierDegree(Quantyfier quantyfier, FuzzySet fuzzySet) {
         double[] arr = fillarr(fuzzySet);
 
         for (int i = 0; i < arr.length; i++) {
             arr[i] = quantyfier.membership(arr[i]);
         }
 
+        // alpha cut, support
         double cnt = 0;
         for (double val : arr) {
             if (val > 0) {
@@ -99,25 +100,25 @@ public class Coefficients {
         return cnt / fuzzySet.getValues().size();
     }
 
-    public static double imprecisionQualificatorDegree(Qualificator qualificator)
+    public static double imprecisionQualifierDegree(Qualifier qualifier)
     {
-        double sum = qualificator.cardinalNumber();
+        double sum = qualifier.cardinalNumber();
 
-        for (Qualificator q : qualificator.getInnerQualificators()) {
+        for (Qualifier q : qualifier.getInnerQualifiers()) {
             sum *= q.cardinalNumber();
         }
 
-        return 1 -  Math.pow(sum, 1.0 / (qualificator.getInnerQualificators().size() + 1));
+        return 1 -  Math.pow(sum, 1.0 / (qualifier.getInnerQualifiers().size() + 1.0));
     }
 
-    public static double cardinalityQualificatorDegree(Qualificator qualificator)
+    public static double cardinalityQualifierDegree(Qualifier qualifier)
     {
-        return qualificator.cardinalNumber();
+        return qualifier.cardinalNumber();
     }
 
-    public static double qualificatorLength(Qualificator qua)
+    public static double qualifierLength(Qualifier qua)
     {
-        return 2 * Math.pow(0.5, qua.getInnerQualificators().size() + 1);
+        return 2 * Math.pow(0.5, qua.getInnerQualifiers().size() + 1.0);
     }
 
     private static double[] fillarr(FuzzySet fuzzySet) {

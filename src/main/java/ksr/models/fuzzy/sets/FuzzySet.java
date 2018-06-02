@@ -47,27 +47,23 @@ public class FuzzySet implements IFuzzy {
         return cardinal / values.size();
     }
 
-    public FuzzySet substract(FuzzySet plus) {
-        innerSets.add(plus);
-        label = label + " and " + plus.getLabel();
+    public FuzzySet intersect(FuzzySet inter) {
+        innerSets.add(inter);
+        label = label + " and " + inter.getLabel();
 
         for (int i = 0; i < membershipValues.length; i++) {
-            if (membershipValues[i] > plus.membershipValues[i]) {
-                membershipValues[i] = plus.membershipValues[i];
-            }
+            membershipValues[i] = Math.min(membershipValues[i], inter.getMembershipValues()[i]);
         }
 
         return this;
     }
 
-    public FuzzySet sum(FuzzySet minus) {
-        innerSets.add(minus);
-        label = label + " or " + minus.getLabel();
+    public FuzzySet union(FuzzySet union) {
+        innerSets.add(union);
+        label = label + " or " + union.getLabel();
 
         for (int i = 0; i < membershipValues.length; i++) {
-            if (membershipValues[i] > minus.membershipValues[i]) {
-                membershipValues[i] = minus.membershipValues[i];
-            }
+            membershipValues[i] = Math.max(membershipValues[i], union.getMembershipValues()[i]);
         }
 
         return this;

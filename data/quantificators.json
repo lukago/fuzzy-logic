@@ -1,9 +1,39 @@
 {
   "qunatifiers": [
     {
-      "label": "Około 1000",
-      "ftype": "triangular",
-      "fparams": "500,100,1500",
+      "label": "About 1000",
+      "ftype": "trapezoidal",
+      "fparams": "0,100,1500,2000",
+      "relative": false
+    },
+    {
+      "label": "About 5000",
+      "ftype": "trapezoidal",
+      "fparams": "2000,4000,6000,8000",
+      "relative": false
+    },
+    {
+      "label": "About 10000",
+      "ftype": "trapezoidal",
+      "fparams": "8000,9000,11000,13000",
+      "relative": false
+    },
+    {
+      "label": "About 15000",
+      "ftype": "trapezoidal",
+      "fparams": "13000,14000,16000,18000",
+      "relative": false
+    },
+    {
+      "label": "About 20000",
+      "ftype": "trapezoidal",
+      "fparams": "18000,19000,21000,23000",
+      "relative": false
+    },
+    {
+      "label": "About 25000",
+      "ftype": "trapezoidal",
+      "fparams": "23000,24000,26000,31000",
       "relative": false
     }
   ]
