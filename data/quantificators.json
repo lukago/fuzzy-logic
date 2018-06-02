@@ -23,18 +23,6 @@
       "ftype": "trapezoidal",
       "fparams": "13000,14000,16000,18000",
       "relative": false
-    },
-    {
-      "label": "About 20000",
-      "ftype": "trapezoidal",
-      "fparams": "18000,19000,21000,23000",
-      "relative": false
-    },
-    {
-      "label": "About 25000",
-      "ftype": "trapezoidal",
-      "fparams": "23000,24000,26000,31000",
-      "relative": false
     }
   ]
 }

@@ -51,9 +51,9 @@ public class LinguisticAnswer {
                 number += Quality.truthfulnessDegree(quantyfier, qua.getOuter());
                 number += Quality.imprecisionQuantifierDegree(quantyfier, qua.getOuter());
                 number += Quality.cardinalityQuantifierDegree(quantyfier, qua.getOuter());
-                number += +Quality.sumarizerLenght(qua.getData());
+                number += Quality.sumarizerLenght(qua.getOuter());
                 number += Quality.coverageSumarizerDegree(qua.getOuter());
-                number += +Quality.cardinalitySumarizerDegree(qua.getOuter());
+                number += Quality.cardinalitySumarizerDegree(qua.getOuter());
                 number += Quality.imprecisionSumarizerDegree(qua.getOuter());
                 number += Quality.accuracySumarizerMeasurement(qua.getOuter());
                 number += Quality.imprecisionQualifierDegree(qua);

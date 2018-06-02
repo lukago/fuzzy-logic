@@ -79,7 +79,9 @@ public class Quality {
     }
 
     public static double cardinalityQuantifierDegree(Quantyfier quantyfier, FuzzySet fuzzySet) {
-        return 1.0 - quantyfier.cardinalNumber() / fuzzySet.getMembershipValues().length;
+        double x = 1.0 - quantyfier.cardinalNumber() / fuzzySet.getMembershipValues().length;
+        System.out.println(x);
+        return x;
     }
 
     public static double imprecisionQuantifierDegree(Quantyfier quantyfier, FuzzySet fuzzySet) {
@@ -100,24 +102,21 @@ public class Quality {
         return cnt / fuzzySet.getValues().size();
     }
 
-    public static double imprecisionQualifierDegree(Qualifier qualifier)
-    {
+    public static double imprecisionQualifierDegree(Qualifier qualifier) {
         double sum = qualifier.cardinalNumber();
 
         for (Qualifier q : qualifier.getInnerQualifiers()) {
             sum *= q.cardinalNumber();
         }
 
-        return 1 -  Math.pow(sum, 1.0 / (qualifier.getInnerQualifiers().size() + 1.0));
+        return 1 - Math.pow(sum, 1.0 / (qualifier.getInnerQualifiers().size() + 1.0));
     }
 
-    public static double cardinalityQualifierDegree(Qualifier qualifier)
-    {
+    public static double cardinalityQualifierDegree(Qualifier qualifier) {
         return qualifier.cardinalNumber();
     }
 
-    public static double qualifierLength(Qualifier qua)
-    {
+    public static double qualifierLength(Qualifier qua) {
         return 2 * Math.pow(0.5, qua.getInnerQualifiers().size() + 1.0);
     }
 
