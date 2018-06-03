@@ -40,6 +40,30 @@ public class LinguisticAnswer {
         return answers;
     }
 
+    public static List<String> answerSets2(List<FuzzySet> fuzzySets, List<Quantyfier> quantyfiers) {
+        List<String> answers = new ArrayList<>();
+        for (FuzzySet lab : fuzzySets) {
+            Quantyfier selected = new Quantyfier();
+            double max = Double.MIN_VALUE;
+            double number = 0;
+
+            for (Quantyfier quantyfier : quantyfiers) {
+                number += Quality.truthfulnessDegree(quantyfier, lab);
+                number /= 1.0;
+
+                if (number > max) {
+                    max = number;
+                    selected = quantyfier;
+                }
+            }
+
+            String output = String.format("%s of people have %s : %f\n", selected.getLabel(), lab.getLabel(), max);
+            answers.add(output);
+        }
+
+        return answers;
+    }
+
     public static List<String> answerQualifiers(List<Qualifier> qualifiers, List<Quantyfier> quantyfiers) {
         List<String> answers = new ArrayList<>();
         for (Qualifier qua : qualifiers) {
