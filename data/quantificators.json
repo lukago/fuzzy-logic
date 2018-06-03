@@ -29,6 +29,12 @@
       "ftype": "trapezoidal",
       "fparams": "0.6,0.7,0.8,0.9",
       "relative": true
+    },
+    {
+      "label": "About 1/4",
+      "ftype": "triangular",
+      "fparams": "0.15,0.25,0.35",
+      "relative": true
     }
   ]
 }
