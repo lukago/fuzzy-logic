@@ -1,0 +1,22 @@
+{
+  "qunatifiers": [
+    {
+      "label": "About 1000",
+      "ftype": "trapezoidal",
+      "fparams": "500,750,1250,1500",
+      "relative": false
+    },
+    {
+      "label": "About 2000",
+      "ftype": "trapezoidal",
+      "fparams": "1500,1750,2250,2500",
+      "relative": false
+    },
+    {
+      "label": "About 3000",
+      "ftype": "trapezoidal",
+      "fparams": "2500,2750,3250,3500",
+      "relative": false
+    }
+  ]
+}
