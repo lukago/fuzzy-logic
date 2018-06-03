@@ -23,12 +23,6 @@
       "ftype": "trapezoidal",
       "fparams": "13000,14000,16000,18000",
       "relative": false
-    },
-    {
-      "label": "Majority",
-      "ftype": "trapezoidal",
-      "fparams": "0.6,0.7,0.8,0.9",
-      "relative": true
     }
   ]
 }
