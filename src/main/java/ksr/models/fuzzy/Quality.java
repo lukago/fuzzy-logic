@@ -10,7 +10,12 @@ public class Quality {
     }
 
     public static double t1TruthfulnessDegree(Quantyfier quantyfier, FuzzySet fuzzySet) {
-        return quantyfier.membership(fuzzySet.cardinalNumber() * fuzzySet.getValues().size());
+        double x = quantyfier.membership(fuzzySet.cardinalNumber() * fuzzySet.getValues().size());
+        if (x > 1) {
+            System.out.println("x");
+
+        }
+        return x;
     }
 
     public static double t2ImprecisionSumarizerDegree(FuzzySet fuzzySet) {

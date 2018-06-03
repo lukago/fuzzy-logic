@@ -19,7 +19,7 @@ public class Quantyfier implements IFuzzy {
     @Override
     public double membership(double x) {
         if (relative) {
-            return membershipFunction.countDegree(x / rowsSize);
+            x /= rowsSize;
         }
 
         return membershipFunction.countDegree(x);

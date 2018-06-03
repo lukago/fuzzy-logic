@@ -1,10 +1,7 @@
 package ksr;
 
 import ksr.models.entities.Person;
-import ksr.models.entities.enums.Education;
-import ksr.models.entities.enums.Race;
 import ksr.models.fuzzy.LinguisticAnswer;
-import ksr.models.fuzzy.functions.DiscreteFunction;
 import ksr.models.fuzzy.functions.TrapezoidalFunction;
 import ksr.models.fuzzy.sets.FuzzySet;
 import ksr.models.fuzzy.sets.Quantyfier;
@@ -40,18 +37,11 @@ public class App {
                 new TrapezoidalFunction(56, 65, 100, 110),
                 people.stream().map(Person::getAge).collect(Collectors.toList()));
 
-
         fuzzySets.add(youngAge);
         fuzzySets.add(middleAge);
         fuzzySets.add(oldAge);
 
-
-
-        System.out.println(oldAge.getValues().stream().mapToInt(Double::intValue).average());
-
         System.out.println(LinguisticAnswer.answerSets(fuzzySets, quantyfiers, weights1));
         System.out.println(LinguisticAnswer.answerSets(fuzzySets, quantyfiers, weights3));
-
-
     }
 }

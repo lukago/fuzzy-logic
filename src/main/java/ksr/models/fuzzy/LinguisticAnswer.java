@@ -17,9 +17,10 @@ public class LinguisticAnswer {
         for (FuzzySet set : fuzzySets) {
             Quantyfier selected = new Quantyfier();
             double max = -1;
-            double sum = 0;
+
 
             for (Quantyfier quantyfier : quantyfiers) {
+                double sum = 0;
                 sum += Quality.t1TruthfulnessDegree(quantyfier, set) * weights.get(0);
                 sum += Quality.t2ImprecisionSumarizerDegree(set) * weights.get(1);
                 sum += Quality.t3CoverageSumarizerDegree(set) * weights.get(2);
@@ -48,9 +49,9 @@ public class LinguisticAnswer {
         for (Qualifier qua : qualifiers) {
             Quantyfier selected = new Quantyfier();
             double max = -1;
-            double sum = 0;
 
             for (Quantyfier quantyfier : quantyfiers) {
+                double sum = 0;
                 sum += Quality.t1TruthfulnessDegree(quantyfier, qua.getOuter()) * weights.get(0);
                 sum += Quality.t2ImprecisionSumarizerDegree(qua.getOuter()) * weights.get(1);
                 sum += Quality.t3CoverageSumarizerDegree(qua.getOuter()) * weights.get(2);
