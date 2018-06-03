@@ -16,7 +16,7 @@ public class LinguisticAnswer {
         List<String> answers = new ArrayList<>();
         for (FuzzySet set : fuzzySets) {
             Quantyfier selected = new Quantyfier();
-            double max = Double.MIN_VALUE;
+            double max = -1;
             double sum = 0;
 
             for (Quantyfier quantyfier : quantyfiers) {
@@ -47,7 +47,7 @@ public class LinguisticAnswer {
         List<String> answers = new ArrayList<>();
         for (Qualifier qua : qualifiers) {
             Quantyfier selected = new Quantyfier();
-            double max = Double.MIN_VALUE;
+            double max = -1;
             double sum = 0;
 
             for (Quantyfier quantyfier : quantyfiers) {
