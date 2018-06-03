@@ -1,29 +1,34 @@
 package ksr.models.fuzzy.functions;
 
-public class TrapezoidalFunction implements IMembershipFunction {
-    
-    private double topLeft;
-    private double bottomLeft;
-    private double topRight;
-    private double bottomRight;
+import lombok.AllArgsConstructor;
 
-    public TrapezoidalFunction(double topLeft, double bottomLeft, double topRight, double bottomRight) {
-        this.topLeft = topLeft;
-        this.bottomLeft = bottomLeft;
-        this.topRight = topRight;
-        this.bottomRight = bottomRight;
-    }
+@AllArgsConstructor
+public class TrapezoidalFunction implements IMembershipFunction {
+
+    private double a;
+    private double b;
+    private double c;
+    private double d;
 
     @Override
-    public double countDegree(double x) {
-        if (x >= topLeft && x <= topRight) return 1;
-        if (x > bottomLeft && x < topLeft) return (x - bottomLeft) / (topLeft - bottomLeft);
-        if (x > topRight && x < bottomRight) return (bottomRight - x) / (bottomRight - topRight);
+    public double countDegree(double temp) {
+        if (temp >= b && temp <= c) {
+            return 1;
+        }
+
+        if (temp > a && temp < b) {
+            return 1.0 / (b - a) * temp + 1.0 - (1.0 / (b - a)) * b;
+        }
+
+        if (temp > c && temp < d) {
+            return 1.0 / (c - d) * temp + 1.0 - (1.0 / (c - d)) * c;
+        }
+
         return 0;
     }
 
     @Override
     public double distance() {
-        return bottomRight - bottomLeft;
+        return d - a;
     }
 }

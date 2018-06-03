@@ -75,7 +75,7 @@ public class Quality {
             sum *= set.cardinalNumber();
         }
 
-        return 1 - Math.pow(sum, 1.0 / fuzzySet.getMembershipValues().length + 1.0);
+        return 1.0 - Math.pow(sum, 1.0 / fuzzySet.getMembershipValues().length + 1.0);
     }
 
     public static double cardinalityQuantifierDegree(Quantyfier quantyfier, FuzzySet fuzzySet) {
@@ -107,7 +107,7 @@ public class Quality {
             sum *= q.cardinalNumber();
         }
 
-        return 1 - Math.pow(sum, 1.0 / (qualifier.getInnerQualifiers().size() + 1.0));
+        return 1.0 - Math.pow(sum, 1.0 / (qualifier.getInnerQualifiers().size() + 1.0));
     }
 
     public static double cardinalityQualifierDegree(Qualifier qualifier) {
@@ -115,7 +115,7 @@ public class Quality {
     }
 
     public static double qualifierLength(Qualifier qua) {
-        return 2 * Math.pow(0.5, qua.getInnerQualifiers().size() + 1.0);
+        return 2.0 * Math.pow(0.5, qua.getInnerQualifiers().size() + 1.0);
     }
 
     private static double[] fillarr(FuzzySet fuzzySet) {
