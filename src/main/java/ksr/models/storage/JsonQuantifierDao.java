@@ -14,11 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JsonQuantifierDao implements IDao<List<Quantyfier>> {
+    private final String filePath;
+    private final int rowsSize;
 
-    private String filePath;
-
-    public JsonQuantifierDao(String filePath) {
+    public JsonQuantifierDao(String filePath, int rowsSize) {
         this.filePath = filePath;
+        this.rowsSize = rowsSize;
     }
 
     @Override
@@ -48,7 +49,7 @@ public class JsonQuantifierDao implements IDao<List<Quantyfier>> {
                         Double.valueOf(params[3]));
             }
 
-            quantyfiers.add(new Quantyfier(function, label, relative));
+            quantyfiers.add(new Quantyfier(function, label, relative, rowsSize));
         });
 
         return quantyfiers;

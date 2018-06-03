@@ -14,17 +14,17 @@ public class LinguisticAnswer {
 
     public static List<String> answerSets(List<FuzzySet> fuzzySets, List<Quantyfier> quantyfiers) {
         List<String> answers = new ArrayList<>();
-        for (FuzzySet lab : fuzzySets) {
+        for (FuzzySet set : fuzzySets) {
             Quantyfier selected = new Quantyfier();
             double max = Double.MIN_VALUE;
             double number = 0;
 
             for (Quantyfier quantyfier : quantyfiers) {
-                number += Quality.truthfulnessDegree(quantyfier, lab);
-                number += Quality.sumarizerLenght(lab);
-                number += Quality.coverageSumarizerDegree(lab);
-                number += Quality.imprecisionSumarizerDegree(lab);
-                number += Quality.accuracySumarizerMeasurement(lab);
+                number += Quality.truthfulnessDegree(quantyfier, set);
+                number += Quality.sumarizerLenght(set);
+                number += Quality.coverageSumarizerDegree(set);
+                number += Quality.imprecisionSumarizerDegree(set);
+                number += Quality.accuracySumarizerMeasurement(set);
                 number /= 5.0;
 
                 if (number > max) {
@@ -33,7 +33,7 @@ public class LinguisticAnswer {
                 }
             }
 
-            String output = String.format("%s of people have %s : %f\n", selected.getLabel(), lab.getLabel(), max);
+            String output = String.format("%s of people have %s : %f\n", selected.getLabel(), set.getLabel(), max);
             answers.add(output);
         }
 
@@ -69,24 +69,24 @@ public class LinguisticAnswer {
         for (Qualifier qua : qualifiers) {
             Quantyfier selected = new Quantyfier();
             double max = Double.MIN_VALUE;
-            double number = 0;
+            double sum = 0;
 
             for (Quantyfier quantyfier : quantyfiers) {
-                number += Quality.truthfulnessDegree(quantyfier, qua.getOuter());
-                number += Quality.imprecisionQuantifierDegree(quantyfier, qua.getOuter());
-                number += Quality.cardinalityQuantifierDegree(quantyfier, qua.getOuter());
-                number += Quality.sumarizerLenght(qua.getOuter());
-                number += Quality.coverageSumarizerDegree(qua.getOuter());
-                number += Quality.cardinalitySumarizerDegree(qua.getOuter());
-                number += Quality.imprecisionSumarizerDegree(qua.getOuter());
-                number += Quality.accuracySumarizerMeasurement(qua.getOuter());
-                number += Quality.imprecisionQualifierDegree(qua);
-                number += Quality.cardinalityQualifierDegree(qua);
-                number += Quality.qualifierLength(qua);
-                number /= 11.0;
+                sum += Quality.truthfulnessDegree(quantyfier, qua.getOuter());
+                sum += Quality.imprecisionQuantifierDegree(quantyfier, qua.getOuter());
+                sum += Quality.cardinalityQuantifierDegree(quantyfier, qua.getOuter());
+                sum += Quality.sumarizerLenght(qua.getOuter());
+                sum += Quality.coverageSumarizerDegree(qua.getOuter());
+                sum += Quality.cardinalitySumarizerDegree(qua.getOuter());
+                sum += Quality.imprecisionSumarizerDegree(qua.getOuter());
+                sum += Quality.accuracySumarizerMeasurement(qua.getOuter());
+                sum += Quality.imprecisionQualifierDegree(qua);
+                sum += Quality.cardinalityQualifierDegree(qua);
+                sum += Quality.qualifierLength(qua);
+                sum /= 11.0;
 
-                if (number > max) {
-                    max = number;
+                if (sum > max) {
+                    max = sum;
                     selected = quantyfier;
                 }
             }

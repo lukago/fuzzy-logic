@@ -21,7 +21,7 @@ public class App {
 
     public static void main(String[] args) throws Exception {
         List<Person> people = new CsvPersonDao("data/adult.test").read();
-        List<Quantyfier> quantyfiers = new JsonQuantifierDao("data/quantificators.json").read();
+        List<Quantyfier> quantyfiers = new JsonQuantifierDao("data/quantificators.json", people.size()).read();
         List<FuzzySet> fuzzySets = new ArrayList<>();
 
         FuzzySet middleAge = new FuzzySet(
